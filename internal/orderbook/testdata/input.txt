@@ -1,0 +1,138 @@
+# The first bit represents either we can trade (1) or not (0)
+# 0 Scenario 1: Balanced book
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 1, IBM, 11, 100, B, 3
+N, 2, IBM, 10, 100, S, 103
+N, 1, IBM, 10, 100, B, 4
+N, 2, IBM, 11, 100, S, 104
+F
+
+# 0 Scenario 2: Shallow bid
+N, 1, AAPL, 10, 100, B, 1
+N, 1, AAPL, 12, 100, S, 2
+N, 2, AAPL, 11, 100, S, 102
+N, 2, AAPL, 10, 100, S, 103
+N, 1, AAPL, 10, 100, B, 3
+F
+
+# 0 Scenario 3: Shallow ask
+N, 1, VAL, 10, 100, B, 1
+N, 2, VAL, 9, 100, B, 101
+N, 2, VAL, 11, 100, S, 102
+N, 1, VAL, 11, 100, B, 2
+N, 2, VAL, 11, 100, S, 103
+F
+
+# 0 Scenario 4: Balanced book, limit below best bid
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 2, IBM, 9, 100, S, 103
+F
+
+# 0 Scenario 5: Balanced book, limit above best ask
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 1, IBM, 12, 100, B, 103
+F
+
+# 0 Scenario 6: Tighten spread through new limit orders
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 16, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 15, 100, S, 102
+N, 2, IBM, 11, 100, B, 103
+N, 1, IBM, 14, 100, S, 3
+F
+
+# 0 Scenario 7: Balanced book, limit sell partial
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 2, IBM, 10, 20, S, 103
+F
+
+# 0 Scenario 8: Balanced book, limit buy partial
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 1, IBM, 11, 20, B, 3
+F
+
+# 0 Scenario 9: Balanced book, cancel best bid and offer
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+C, 1, 1
+C, 2, 102
+F
+
+# 0 Scenario 10: Balanced book, cancel behind best bid and offer
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+C, 1, 2
+C, 2, 101
+F
+
+# 0 Scenario 11: balanced book, cancel all bids
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+C, 1, 1
+C, 2, 101
+F
+
+# 0 Scenario 12: Balanced book, TOB volume changes
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 2, IBM, 11, 100, S, 103
+C, 2, 103
+C, 2, 102
+C, 1, 2
+F
+
+# 1 Scenario 13: (Scenario 5 With Trade) Balanced book, limit above best ask
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 1, IBM, 12, 100, B, 103
+F
+
+# 1 Scenario 14: (Scenario 3 with Trade) Shallow ask
+N, 1, VAL, 10, 100, B, 1
+N, 2, VAL, 9, 100, B, 101
+N, 2, VAL, 11, 100, S, 102
+N, 1, VAL, 11, 100, B, 2
+N, 2, VAL, 11, 100, S, 103
+F
+
+# 1 Scenario 15: Partial Trade
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 1, IBM, 12, 50, B, 103
+F
+
+# 1 Scenario 16: Trade + Partial Trade
+N, 1, IBM, 10, 100, B, 1
+N, 1, IBM, 12, 100, S, 2
+N, 2, IBM, 9, 100, B, 101
+N, 2, IBM, 11, 100, S, 102
+N, 3, IBM, 12, 150, B, 103
+F
