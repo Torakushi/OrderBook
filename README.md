@@ -37,7 +37,7 @@ Publish trades (matched orders) format:
 
 Use the docker file:
 
-`sudo docker build --progress=plain -t kraken .`
+`sudo docker build --progress=plain -t ob .`
 
 It builds the docker file **and runs the tests** (I added two tests with partial orders)
 
@@ -51,7 +51,7 @@ If you want to change input/output, you have to change `input.txt` and `output.t
 
 If you really want to have all the output:
 
-`sudo docker run kraken`
+`sudo docker run ob`
 
 I used `go1.18` to use `bytes.Cut()` (I Could have fun with generics as well maybe but don't have the time to
 think about it)
